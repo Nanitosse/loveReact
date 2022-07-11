@@ -1,14 +1,20 @@
-import logo from './logo.svg';
+import Heartlogo from './heart.svg';
 import './App.css';
 
-function App(props) {
-  console.log(props)
-  return (
-    
-    <div className="App">
-      {props.msg}
-    </div>
-  );
+const message= 'cool cud';
+const Heart =(props)=>{
+    return (
+        <div className='heart'>
+            <img className='heart-img' src={Heartlogo} alt='heart'/>
+            <p className='heart-message'>{props.msg}</p>
+        </div>
+    )
+
+}
+
+function App() {
+  
+    return <Heart msg={message}/>;
 }
 
 export default App;
