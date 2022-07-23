@@ -3,12 +3,14 @@ import { Container, Row, Col } from 'reactstrap';
 import CampsitesList from '../features/campsites/CampsitesList'
 //import { selectCampsiteById } from '../features/campsites/campsitesSlice';
 //import { useState } from "react";
+import SubHeader from '../components/SubHeader';
 
 
 const CampsitesDirectoryPage = () => {
 
     return (
         <Container>
+            <SubHeader current='directory'/>
             <CampsitesList  />
         </Container>
 
