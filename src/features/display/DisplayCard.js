@@ -6,7 +6,7 @@ const  DisplayCard = ({item})=>{
 
     return(
         <Card>
-            <CardImg sr={image} alt={name}/>
+            <CardImg src={image} alt={name}/>
             <CardBody>
                 <CardTitle>{name}</CardTitle>
                 <CardText>{description}</CardText>
