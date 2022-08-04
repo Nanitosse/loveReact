@@ -13,8 +13,8 @@ const initialState={
 });
 
 
-export const sellectAllcampsites=()=>{
-    return CAMPSITES;
+export const sellectAllcampsites=(state)=>{
+    return state.campsites.campsitesArray;
 };
 
 export const campsitesReducer= campsitesSlice.reducer;
@@ -22,13 +22,13 @@ export const campsitesReducer= campsitesSlice.reducer;
 
 
 
-export const selectCampsiteById= (id)=>{
+export const selectCampsiteById= (id)=>(state)=>{
 
-    return  CAMPSITES.find((campsite)=>campsite.id=== parseInt(id));
+    return  state.campsites.campsitesArray.find((campsite)=>campsite.id=== parseInt(id));
 
 };
 
- export  const selectFeaturedCampsite = () =>{
+ export  const selectFeaturedCampsite = (state) =>{
        return CAMPSITES.find((campsite) => campsite.featured);
 
        
