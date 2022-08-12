@@ -1,5 +1,5 @@
 import {PARTNERS} from '../../app/shared /PARTNERS';
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice , createAsyncThunk} from '@reduxjs/toolkit';
 
 
 const initialState = {

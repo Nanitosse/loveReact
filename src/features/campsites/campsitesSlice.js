@@ -1,47 +1,47 @@
 
 // import { CAMPSITES } from "../../app/shared /CAMPSITES";
-import { createSlice, createAsyncThunk} from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { baseUrl } from "../../app/shared /baseUrl";
-import {mapImageURL} from "../../utils/mapImageURL";
+import { mapImageURL } from "../../utils/mapImageURL";
 
-export const fetchCampsites=  createAsyncThunk(
-    "campsites/fetchCampsites",
-    async()=>{
-        const response = await fetch(baseUrl+ "campsites");
+export const fetchCampsites = createAsyncThunk(
+    'campsites/fetchCampsites',
+    async () => {
+        const response = await fetch(baseUrl + 'campsites');
 
-        if(!response.ok){
+        if (!response.ok) {
             return Promise.reject("unable to fetch,status:" + response.status);
 
         }
         const data = await response.json();
-        return  data;
+        return data;
 
     }
 
 )
 
 
-const initialState={
-    campsitesArray:[],
-    isLoading:true,
-    errMsg: ''
+const initialState = {
+    campsitesArray: [],
+    isLoading: true,
+    errMsg: '',
 };
 
- const campsitesSlice= createSlice({
-    name:'campsites',
+const campsitesSlice = createSlice({
+    name: 'campsites',
     initialState,
     reducers: {},
-    extraReducers:{
-        [fetchCampsites.pending]: (state)=>{
-            state.isloading = true;
+    extraReducers: {
+        [fetchCampsites.pending]: (state) => {
+            state.isLoading = true;
         },
-        [fetchCampsites.fulfilled]:(state,action)=>{
-            state.isloading = false;
-            state.errMsg='';
+        [fetchCampsites.fulfilled]: (state, action) => {
+            state.isLoading = false;
+            state.errMsg = '';
             state.campsitesArray = mapImageURL(action.payload);
         },
-        [fetchCampsites.rejected]:(state,action)=>{
-            state.isLoading =false;
+        [fetchCampsites.rejected]: (state, action) => {
+            state.isLoading = false;
             state.errMsg = action.error ? action.error.message : 'Fetch failed';
 
         }
@@ -51,23 +51,23 @@ const initialState={
 });
 
 
-export const sellectAllcampsites=(state)=>{
+export const sellectAllcampsites = (state) => {
     return state.campsites.campsitesArray;
 };
 
-export const campsitesReducer= campsitesSlice.reducer;
+export const campsitesReducer = campsitesSlice.reducer;
 
 
 
 
-export const selectCampsiteById= (id)=>(state)=>{
+export const selectCampsiteById = (id) => (state) => {
 
-    return  state.campsites.campsitesArray.find((campsite)=>campsite.id=== parseInt(id));
+    return state.campsites.campsitesArray.find((campsite) => campsite.id === parseInt(id));
 
 };
 
- export  const selectFeaturedCampsite = (state) =>{
-       return state.campsites.campsitesArray.find((campsite) => campsite.featured);
+export const selectFeaturedCampsite = (state) => {
+    return state.campsites.campsitesArray.find((campsite) => campsite.featured);
 
-       
-    }
+
+}
