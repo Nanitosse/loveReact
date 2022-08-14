@@ -6,6 +6,7 @@ import bootsImg from '../assets/img/boots.jpg';
 // Photo by Jonathan Gallegos on Unsplash
 import asyncImg from '../assets/img/mount-promise.jpg';
 
+
 export const PROMOTIONS = [
     {
         id: 0,
